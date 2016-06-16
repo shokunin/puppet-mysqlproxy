@@ -2,7 +2,7 @@ class mysqlproxy::service {
 
   include stdlib
 
-  notify { "TEST: ${::os['release']['major']}": }
+  notify { "TEST: ${::os}": }
   #if versioncmp($::os['release']['major'], '14.04') > 0 {
   #  notify { 'Setup using systemd': }
   #} else {
