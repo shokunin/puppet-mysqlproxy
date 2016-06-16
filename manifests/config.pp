@@ -1,4 +1,4 @@
-class mysqlproxy::config {
+class mysqlproxy::config inherits mysqlproxy {
   file { '/etc/default/mysql-proxy':
     owner   => root,
     group   => root,

@@ -1,4 +1,4 @@
-class mysqlproxy::service {
+class mysqlproxy::service inherits mysqlproxy {
 
   include stdlib
 
