@@ -1,6 +1,6 @@
 class mysqlproxy::install inherits mysqlproxy {
 
-  if $instal_version =~ /mysql-proxy/ {
+  if $install_version =~ /mysql-proxy/ {
 
     include staging
 
