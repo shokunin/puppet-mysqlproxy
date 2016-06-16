@@ -23,7 +23,6 @@ class mysqlproxy::install inherits mysqlproxy {
     group   => root,
     mode    => '0755',
     ensure  => directory,
-    require => Package['mysql-proxy'],
   }
 
   file { '/etc/mysql-proxy/lua.d':
