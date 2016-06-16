@@ -1,0 +1,11 @@
+[Unit]
+Description=Job that runs the mysql-proxy daemon
+Documentation=read
+
+[Service]
+Type=forking
+EnvironmentFile=-/etc/default/mysql-proxy
+ExecStart=/usr/bin/mysql-proxy "${OPTIONS}"
+
+[Install]
+WantedBy=multi-user.target

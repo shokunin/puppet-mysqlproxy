@@ -2,16 +2,18 @@ class mysqlproxy::service {
 
   include stdlib
 
-  notify { "TEST: ${::os.release}": }
-  #if versioncmp($::os['release']['major'], '14.04') > 0 {
-  #  notify { 'Setup using systemd': }
-  #} else {
-  #  notify { 'Setup using upstart': }
-  #}
+  file { '/lib/systemd/system/mysql-proxy.service':
+    ensure => present,
+    owner  => root,
+    group  => root,
+    mode   => '0644',
+    source => 'puppet:///modules/mysqlproxy/mysql-proxy.service',
+  }
 
   service { 'mysql-proxy':
     ensure    => running,
     hasstatus => true,
+    require   => File['/lib/systemd/system/mysql-proxy.service'],
   }
 
 }
