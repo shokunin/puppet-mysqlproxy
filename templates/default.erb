@@ -1,25 +1,25 @@
-ENABLED="<%= defaultenabled %>"
-OPTIONS="<%if backends.is_a? Array -%>
-<% backends.each do |backend| -%><%= "--proxy-backend-addresses=#{backend} " %><% end -%>
-<% elsif backends != '' -%>
-<%= "--proxy-backend-addresses=#{backends} " -%>
+ENABLED="<%= @defaultenabled %>"
+OPTIONS="<%if @backends.is_a? Array -%>
+<% @backends.each do |backend| -%><%= "--proxy-backend-addresses=#{backend} " %><% end -%>
+<% elsif @backends != '' -%>
+<%= "--proxy-backend-addresses=#{@backends} " -%>
 <% end -%>
-<% if luascript != '' -%>
-<%= "--proxy-lua-script=/etc/mysql-proxy/lua.d/#{luascript} " -%>
+<% if @luascript != '' -%>
+<%= "--proxy-lua-script=/etc/mysql-proxy/lua.d/#{@luascript} " -%>
 <% end -%>
-<% if address != '' -%>
-<%= "--proxy-address=#{address} " -%>
+<% if @address != '' -%>
+<%= "--proxy-address=#{@address} " -%>
 <% end -%>
-<% if adminaddress != '' -%>
-<%= "--admin-address=#{adminaddress} " -%>
+<% if @adminaddress != '' -%>
+<%= "--admin-address=#{@adminaddress} " -%>
 <% end -%>
-<% if adminusername != '' -%>
-<%= "--admin-username=#{adminusername} " -%>
+<% if @adminusername != '' -%>
+<%= "--admin-username=#{@adminusername} " -%>
 <% end -%>
-<% if adminpassword != '' -%>
-<%= "--admin-password=#{adminpassword} " -%>
+<% if @adminpassword != '' -%>
+<%= "--admin-password=#{@adminpassword} " -%>
 <% end -%>
-<% if adminluascript != '' -%>
-<%= "--admin-lua-script=#{adminluascript} " -%>
+<% if @adminluascript != '' -%>
+<%= "--admin-lua-script=#{@adminluascript} " -%>
 <% end -%>
-<%= options %>"
+<%= @options %>"
