@@ -1,6 +1,6 @@
 class mysqlproxy::install inherits mysqlproxy {
 
-  if $install_url =~ /http/ {
+  if $instal_version =~ /mysql-proxy/ {
 
     include staging
 
@@ -10,14 +10,17 @@ class mysqlproxy::install inherits mysqlproxy {
       group  => root,
       mode   => '0755',
     } ->
-
     staging::file { 'mysql-proxy.tar.gz':
-      source => $install_url,
+      source => "https://downloads.mysql.com/archives/get/file/${install_version}.tar.gz",
     } ->
-
     staging::extract { 'mysql-proxy.tar.gz':
       target  => '/opt/mysql-proxy',
+    } ->
+    file { '/usr/bin/mysql-proxy' :
+      ensure => link,
+      target => "/opt/mysql-proxy/${install_version}/bin/mysql-proxy",
     }
+    
 
   } else {
     package{ 'mysql-proxy':

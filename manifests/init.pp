@@ -20,7 +20,7 @@ class mysqlproxy ($defaultenabled="true",
                   $adminusername='',
                   $adminpassword='',
                   $adminluascript='',
-                  $install_url='') {
+                  $install_version='') {
 
   include mysqlproxy::install
   include mysqlproxy::config
