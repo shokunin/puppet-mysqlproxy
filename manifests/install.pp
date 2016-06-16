@@ -22,13 +22,13 @@ class mysqlproxy::install {
     ensure  => directory;
   }
 
-  unless ($luascript =='') {
-    file{ "/etc/mysql-proxy/lua.d/${luascript}":
-      owner   => root,
-      group   => root,
-      mode    => 644,
-      source  => "puppet:///modules/mysqlproxy/lua.d/${luascript}",
-      require => File['/etc/mysql-proxy/lua.d'],
-    }
-  }
+  #  unless ($luascript =='') {
+  #    file{ "/etc/mysql-proxy/lua.d/${luascript}":
+  #      owner   => root,
+  #      group   => root,
+  #      mode    => 644,
+  #      source  => "puppet:///modules/mysqlproxy/lua.d/${luascript}",
+  #      require => File['/etc/mysql-proxy/lua.d'],
+  #    }
+  #  }
 }
