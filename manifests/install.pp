@@ -17,10 +17,12 @@ class mysqlproxy::install inherits mysqlproxy {
       target  => '/opt/mysql-proxy',
     } ->
     file { '/usr/bin/mysql-proxy' :
-      ensure => link,
-      target => "/opt/mysql-proxy/${install_version}/bin/mysql-proxy",
+      ensure  => present,
+      owner   => root,
+      group   => root,
+      mode    => '0755',
+      content => "#!/bin/bash\n/opt/mysql-proxy/${install_version}/bin/mysql-proxy",
     }
-    
 
   } else {
     package{ 'mysql-proxy':
