@@ -4,6 +4,13 @@ class mysqlproxy::install inherits mysqlproxy {
 
     include staging
 
+    file { '/opt/mysql-proxy':
+      ensure => directory,
+      owner  => root,
+      group  => root,
+      mode   => '0755',
+    } ->
+
     staging::file { 'mysql-proxy.tar.gz':
       source => $install_url,
     } ->
