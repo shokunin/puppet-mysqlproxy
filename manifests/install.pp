@@ -1,4 +1,4 @@
-class mysqlproxy::install inherits mysqlprox {
+class mysqlproxy::install inherits mysqlproxy {
 
   if $install_url =~ /http/ {
 
