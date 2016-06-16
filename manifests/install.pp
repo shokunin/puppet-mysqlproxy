@@ -21,7 +21,7 @@ class mysqlproxy::install inherits mysqlproxy {
       owner   => root,
       group   => root,
       mode    => '0755',
-      content => "#!/bin/bash\n/opt/mysql-proxy/${install_version}/bin/mysql-proxy",
+      content => "#!/bin/bash\n/opt/mysql-proxy/${install_version}/bin/mysql-proxy \$@",
     }
 
   } else {
