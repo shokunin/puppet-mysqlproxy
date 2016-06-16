@@ -1,4 +1,7 @@
-OPTIONS="
-<% @backends.each do |backend| -%> --proxy-backend-addresses=<%= backend %><% end -%>
+OPTIONS="<% @backends.each do |backend| -%> --proxy-backend-addresses=<%= backend %><% end -%>
 <% unless @address == '' -%> --proxy-address=<%= @address %><% end -%>
-<%= @options %>"
+<% unless @adminusername == '' -%> --admin-username=<%= @adminusername %><% end -%>
+<% unless @adminpassword == '' -%> --admin-password=<%= @adminpassword %><% end -%>
+<% unless @adminluascript == '' -%> --admin-lua-script=<%= @adminluascript %><% end -%>
+<% unless @luascript == '' -%> =--proxy-lua-script=/etc/mysql-proxy/lua.d/<%= @luascript %><% end -%>
+ <%= @options %>"
