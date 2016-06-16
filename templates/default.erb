@@ -1,3 +1,4 @@
 OPTIONS="
-<% @backends.each do |backend| -%>"--proxy-backend-addresses=<%= backend %> "<% end -%>
+<% @backends.each do |backend| -%> --proxy-backend-addresses=<%= backend %><% end -%>
+<% unless @address == '' -%> --proxy-address=<%= @address %><% end -%>
 <%= @options %>"
