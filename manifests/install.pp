@@ -32,7 +32,7 @@ class mysqlproxy::install inherits mysqlproxy {
   file { '/etc/mysql-proxy/lua.d':
     owner   => root,
     group   => root,
-    mode    => 0644,
+    mode    => '0644',
     recurse => true,
     purge   => true,
     source  => 'puppet:///modules/mysqlproxy/lua.d',
