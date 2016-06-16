@@ -3,8 +3,9 @@ class mysqlproxy::install inherits mysqlproxy {
   if $install_url =~ /http/ {
 
     include staging
+
     staging::file { 'mysql-proxy.deb':
-      source => $intsall_url,
+      source => $install_url,
     }
 
     package { 'mysql-proxy':
