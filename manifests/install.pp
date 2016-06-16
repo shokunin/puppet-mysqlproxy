@@ -1,7 +1,23 @@
 class mysqlproxy::install {
 
-  package{ 'mysql-proxy':
-    ensure => installed;
+  if $install_url =~ /http/ {
+
+    include staging
+    staging::file { 'mysql-proxy.deb':
+      source => $intsall_url,
+    }
+
+    package { 'mysql-proxy':
+      ensure   => installed,
+      provider => dpkg,
+      source   => '/opt/staging/mysqlproxy/mysql-proxy.deb',
+      require  => Staging::File['mysql-proxy.deb'],
+    }
+
+  } else {
+    package{ 'mysql-proxy':
+      ensure => installed;
+    }
   }
 
   file { '/etc/mysql-proxy':
