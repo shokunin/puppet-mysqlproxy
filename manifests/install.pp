@@ -4,15 +4,12 @@ class mysqlproxy::install inherits mysqlproxy {
 
     include staging
 
-    staging::file { 'mysql-proxy.deb':
+    staging::file { 'mysql-proxy.tar.gz':
       source => $install_url,
-    }
+    } ->
 
-    package { 'mysql-proxy':
-      ensure   => installed,
-      provider => dpkg,
-      source   => '/opt/staging/mysqlproxy/mysql-proxy.deb',
-      require  => Staging::File['mysql-proxy.deb'],
+    staging::extract { 'mysql-proxy.tar.gz':
+      target  => '/opt/mysql-proxy',
     }
 
   } else {
